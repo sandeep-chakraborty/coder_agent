@@ -21,7 +21,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.llm,
+            llm=self.llm
         )
 
     def programmer_agent(self, tools):
@@ -36,7 +36,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.llm,
+            llm=self.llm
         )
 
     def tester_agent(self, tools):
@@ -50,7 +50,7 @@ class CustomAgents:
             tools=tools,
             allow_delegation=False,
             verbose=True,
-            llm=self.llm,
+            llm=self.llm
         )
 
     def reviewer_agent(self, tools):
@@ -63,5 +63,5 @@ class CustomAgents:
             tools=tools,            
             allow_delegation=False,
             verbose=True,
-            llm=self.llm,
+            llm=self.llm
         )
