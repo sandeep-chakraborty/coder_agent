@@ -8,13 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 class CustomAgents:
     def __init__(self):
-       self.llm = ChatGroq(
-            api_key="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",
-            model="llama3-70b-8192"
-        )
-
-        
-
+       self.llm =  ChatOpenAI(model_name="gpt-4o", temperature=0.7)
     def architect_agent(self, tools):
         return Agent(
             role="Software Architect",
@@ -33,7 +27,7 @@ class CustomAgents:
     def programmer_agent(self, tools):
         return Agent(
             role="Senior Software Engineer",
-            backstory=dedent(f"""\
+            backstory=dedent(f"""
                              You are a Senior Software Engineer at a leading tech think tank.
 				Your expertise in programming in python. and do your best to
 				produce perfect code you have a keen eye for detail and a knack for translating high-level design solutions into robust,

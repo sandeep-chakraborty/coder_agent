@@ -2,7 +2,6 @@ import warnings
 warnings.filterwarnings("ignore")
 import os
 from crewai import Agent, Task, Crew, Process
-#from decouple import config
 from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
@@ -10,6 +9,8 @@ from crewai_tools import  FileReadTool
 from tools.file_write import FileWriteTool
 from tools.directory_write import DirWriteTool
 from tools.search_tools import SearchTools
+from dotenv import load_dotenv
+load_dotenv()
 
 search_tool = SearchTools.search_internet
 file_read_tool = FileReadTool()
