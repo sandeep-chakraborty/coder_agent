@@ -8,30 +8,26 @@ class CustomTasks:
 
     def architecture_task(self, agent, tools, user_input):
         return Task(
-            description=dedent(
-                f"""
-            Provide a high-level solution architecture for the given problem: {user_input}. 
+            description=dedent(f"""
+            Design the high-level structure for a new CrewAI agent to solve: {user_input}. 
             Your final answer must include a clear overview and major components involved.
             {self.__tip_section()}
-            You have access to tools which can search the internet, read files, write files and create directories 
-            """
-            ),
-            expected_output='A document outlining the high-level architecture.',
+            You have access to tools which can search the internet, read files, write files, and create directories.
+            """),
+            expected_output='A document outlining the high-level design of the new CrewAI agent.',
             tools=tools,
             agent=agent,
         )
 
     def implementation_task(self, agent, tools, context):
         return Task(
-            description=dedent(
-                f"""
-            Implement the solution as per the architect's overview.
-            Your final answer must include the code implementing the solution.                          
+            description=dedent(f"""
+            Implement the design specifications for the new CrewAI agent.
+            Your final answer must include the code implementing the agent.                          
             {self.__tip_section()}
-            You have access to tools which can read files, write files and create directories 
-            """
-            ),
-            expected_output='Python code (py files) implementing the solution.',
+            You have access to tools which can read files, write files, and create directories.
+            """),
+            expected_output='Python code implementing the new CrewAI agent.',
             tools=tools,
             agent=agent,
             context=context
@@ -39,15 +35,13 @@ class CustomTasks:
 
     def testing_task(self, agent, tools, context):
         return Task(
-            description=dedent(
-                f"""
-            Write and run test cases for the implemented code. 
+            description=dedent(f"""
+            Write and run test cases for the new CrewAI agent. 
             Your final answer must include test scripts and test results.                          
             {self.__tip_section()}
-            You have access to tools which can read files, write files and create directories 
-            """
-            ),
-            expected_output='Test scripts and test document for the implemented code.',
+            You have access to tools which can read files, write files, and create directories.
+            """),
+            expected_output='Test scripts and test document for the new CrewAI agent.',
             tools=tools,
             agent=agent,
             context=context
@@ -55,16 +49,14 @@ class CustomTasks:
 
     def reviewing_task(self, agent, tools, context):
         return Task(
-            description=dedent(
-                f"""
-            Review the work done by each agent at each step.
+             description=dedent(f"""
+            Review the design and implementation of the new CrewAI agent.
             Your final answer must include feedback and necessary revisions.
-            You should also know how to run the application which can be useful to the users.
+            You should also provide steps to run the agent as a documentation for users.
             {self.__tip_section()}
-            You have access to tools which can read files, write files and create directories 
-            """
-            ),
-            expected_output='Feedback and revisions for each step of the process. Also a final document which has steps to run the code given which can serve as a documentation for users',
+            You have access to tools which can read files, write files, and create directories.
+            """),
+            expected_output='Feedback and revisions for each step of the process, along with a final document for running the agent.',
             tools=tools,
             agent=agent,
             context=context

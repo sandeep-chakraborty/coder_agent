@@ -6,6 +6,8 @@ from langchain_openai import ChatOpenAI
 from langchain_community.llms import OpenAI, Ollama
 from dotenv import load_dotenv
 load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"] = openai_api_key
 class CustomAgents:
     def __init__(self):
        self.llm =  ChatOpenAI(model_name="gpt-4o", temperature=0.7)
@@ -13,11 +15,10 @@ class CustomAgents:
         return Agent(
             role="Software Architect",
             backstory=dedent(f"""\
-            With years of experience in system design, 
-            you excel at breaking down complex problems into manageable solutions,
-            providing a solid foundation for implementation."""),
+            With extensive experience in AI system design, 
+            you specialize in creating and configuring intelligent agents."""),
             goal=dedent(f"""\
-            Provide a high-level solution overview for a given problem"""),
+           Design the high-level structure of new CrewAI agents."""),
             tools=tools,
             allow_delegation=False,
             verbose=True,
@@ -28,11 +29,8 @@ class CustomAgents:
         return Agent(
             role="Senior Software Engineer",
             backstory=dedent(f"""
-                             You are a Senior Software Engineer at a leading tech think tank.
-				Your expertise in programming in python. and do your best to
-				produce perfect code you have a keen eye for detail and a knack for translating high-level design solutions into robust,
-                efficient code."""),
-            goal=dedent(f"""Implement the solution provided by the architect"""),
+                            As a seasoned software engineer, you excel at implementing AI agents based on high-level designs."""),
+            goal=dedent(f"""Implement the design specifications for new CrewAI agents."""),
             tools=tools,
             allow_delegation=False,
             verbose=True,
@@ -43,11 +41,12 @@ class CustomAgents:
         return Agent(
             role="Software Tester",
             backstory=dedent(f"""\
-            Your passion for quality ensures that every piece of code meets the highest
+             Your passion for quality ensures that every agent meets the highest
             standards through rigorous testing."""),
             goal = dedent("""\
-            Write and run test cases for the code implemented by the programmer"""),
+           Test the implemented CrewAI agents to ensure they work as expected."""),
             tools=tools,
+            allow_code_execution=True,
             allow_delegation=False,
             verbose=True,
             llm=self.llm
@@ -57,9 +56,9 @@ class CustomAgents:
         return Agent(
             role="Software Reviewer",
             backstory=dedent("""\
-            With a critical eye, you review each step of the development process, ensuring quality and consistency."""),
+           With a critical eye, you review each agent's implementation, ensuring quality and consistency."""),
             goal=dedent("""\
-            Review the work of each agent at each step"""),
+           Review the design and implementation of CrewAI agents"""),
             tools=tools,            
             allow_delegation=False,
             verbose=True,

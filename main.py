@@ -11,6 +11,8 @@ from tools.directory_write import DirWriteTool
 from tools.search_tools import SearchTools
 from dotenv import load_dotenv
 load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"] = openai_api_key
 
 search_tool = SearchTools.search_internet
 file_read_tool = FileReadTool()
