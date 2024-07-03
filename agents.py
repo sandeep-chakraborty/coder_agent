@@ -3,11 +3,11 @@ import os
 from textwrap import dedent
 from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
-from langchain_community.llms import OpenAI, Ollama
+from langchain_community.llms import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
-os.environ["OPENAI_API_KEY"] = openai_api_key
+# openai_api_key = os.getenv("OPENAI_API_KEY")
+# os.environ["OPENAI_API_KEY"] = openai_api_key
 class CustomAgents:
     def __init__(self):
        self.llm =  ChatOpenAI(model_name="gpt-4o", temperature=0.7)
@@ -20,7 +20,7 @@ class CustomAgents:
             goal=dedent(f"""\
            Design the high-level structure of new CrewAI agents."""),
             tools=tools,
-            allow_code_execution=True,
+            #allow_code_execution=True,
             allow_delegation=False,
             verbose=True,
             llm=self.llm
@@ -34,7 +34,7 @@ class CustomAgents:
             goal=dedent(f"""Implement the design specifications for new CrewAI agents."""),
             tools=tools,
             allow_delegation=False,
-            allow_code_execution=True,
+            #allow_code_execution=True,
             verbose=True,
             llm=self.llm
         )
@@ -48,7 +48,7 @@ class CustomAgents:
             goal = dedent("""\
            Test the implemented CrewAI agents to ensure they work as expected."""),
             tools=tools,
-            allow_code_execution=True,
+            #allow_code_execution=True,
             allow_delegation=False,
             verbose=True,
             llm=self.llm
@@ -62,7 +62,7 @@ class CustomAgents:
             goal=dedent("""\
            Review the design and implementation of CrewAI agents"""),
             tools=tools,    
-            allow_code_execution=True,       
+            #allow_code_execution=True,       
             allow_delegation=False,
             verbose=True,
             llm=self.llm
