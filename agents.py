@@ -20,6 +20,7 @@ class CustomAgents:
             goal=dedent(f"""\
            Design the high-level structure of new CrewAI agents."""),
             tools=tools,
+            allow_code_execution=True,
             allow_delegation=False,
             verbose=True,
             llm=self.llm
@@ -33,6 +34,7 @@ class CustomAgents:
             goal=dedent(f"""Implement the design specifications for new CrewAI agents."""),
             tools=tools,
             allow_delegation=False,
+            allow_code_execution=True,
             verbose=True,
             llm=self.llm
         )
@@ -59,7 +61,8 @@ class CustomAgents:
            With a critical eye, you review each agent's implementation, ensuring quality and consistency."""),
             goal=dedent("""\
            Review the design and implementation of CrewAI agents"""),
-            tools=tools,            
+            tools=tools,    
+            allow_code_execution=True,       
             allow_delegation=False,
             verbose=True,
             llm=self.llm
